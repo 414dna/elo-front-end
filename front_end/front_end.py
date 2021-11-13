@@ -20,8 +20,14 @@ def confirm():
             flash('Invalid password provided error')
             return 'efef'
         if resp['registered']:
-            # user1(node=1,id=6)
+            
             return render_template('nodepg.html')
+@app.route('/login',methods=['POST','GET'])
+def login():
+    noder=request.form.get('node')
+    macr=request.form.get('mac')
+    user1(node=noder,id=macr)
+    return 'done'
 
 if __name__ == '__main__':
     app.run(debug=True)
