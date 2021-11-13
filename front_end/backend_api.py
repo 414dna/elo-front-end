@@ -18,8 +18,9 @@ def auth1(email=None,password=None):
   print(user)
   return user
 def user1(node=None,id=None):
-  data = {"humid": 0,'id':id,'temp': 0}
-  db.child(node).child(id).set(data)
+  data = {f"optim{id}": 0,f'valve{id}': 0}
+  node=node+id
+  db.child(node).update(data)
   Keys = db.child(node).shallow().get().val()
   for key in Keys:
     if key.isnumeric():
